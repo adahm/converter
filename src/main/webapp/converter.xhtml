@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Convert some currencies</title>
+    </h:head>
+    <h:body>
+        <h1>Use google instead of this crap</h1>
+        <h:form>
+            <p>
+                <h:outputLabel for="convertAmt" value="Convert this:"/>
+                <h:inputText id="convertAmt" value ="#{currManager.inAmount}"/>
+                <h:outputText  value="You will get: #{currManager.outAmount}"/>
+            </p>
+            <p>
+                <h:outputLabel value="From:"/>
+                <h:selectOneMenu value="#{currManager.fromCurr}">
+                    <f:selectItem itemValue="sek" itemLabel="SEK"/>
+                    <f:selectItem itemValue="nok" itemLabel="NOK"/>
+                    <f:selectItem itemValue="eur" itemLabel="EUR"/>
+                    <f:selectItem itemValue="usd" itemLabel="USD"/>
+                </h:selectOneMenu>
+
+                <h:outputLabel value="To:"/>
+                <h:selectOneMenu value="#{currManager.toCurr}">
+                    <f:selectItem itemValue="sek" itemLabel="SEK"/>
+                    <f:selectItem itemValue="nok" itemLabel="NOK"/>
+                    <f:selectItem itemValue="eur" itemLabel="EUR"/>
+                    <f:selectItem itemValue="usd" itemLabel="USD"/>
+                </h:selectOneMenu>
+                <h:commandButton value="Convert" action="#{currManager.doConversion}"/>
+            </p>
+        </h:form>     
+    </h:body>
+</html>
+
