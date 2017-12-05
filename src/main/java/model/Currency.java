@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "CURRENCY")
 @XmlRootElement
 public class Currency implements Serializable {
-
+    //map variables to collums
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)

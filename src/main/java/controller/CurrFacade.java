@@ -12,13 +12,14 @@ import javax.ejb.*;
  *
  * @author Andreas
  */
+//set up container manged transaction 
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 @Stateless
 public class CurrFacade {
     @EJB CurrDAO currencyDB;
     
     public double convert(String from, String to, double inAmount){
-        
+        //call the database access class to convert a currency
         return currencyDB.convert(from, to, inAmount);
     }
     // Add business logic below. (Right-click in editor and choose

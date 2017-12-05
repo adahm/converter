@@ -18,9 +18,11 @@ import javax.inject.Named;
  *
  * @author Andreas
  */
+//set name to currManger and make it viewscoped for the mangebean
 @Named("currManager")
 @ViewScoped
 public class CurrManager implements Serializable{
+    //make variablies avaiable to the xhtml file
     @EJB
     private CurrFacade currFacade;
     private String fromCurr;
@@ -29,7 +31,7 @@ public class CurrManager implements Serializable{
     private double outAmount;
     
     public void doConversion(){
-
+        //called when convert button pushed will update the outamount with the converted value    
         outAmount = currFacade.convert(fromCurr, toCurr, inAmount);
     }
 

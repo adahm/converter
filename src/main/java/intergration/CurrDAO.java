@@ -19,11 +19,15 @@ import model.Currency;
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
 @Stateless
 public class CurrDAO {
+    //get the database and create entitymanger for it
     @PersistenceContext(unitName = "currPU")
     private EntityManager em;
     
     public double convert(String from, String to, double inAmount){
+        //find the row with the name that is the currency we will convert from. Name in Db is primary key
         Currency curr = em.find(Currency.class, from);
+        
+        //return the converted value by geting the conversion rate from the currency object 
         if(to.equals("eur")){
             return inAmount * curr.getEur();
         }
