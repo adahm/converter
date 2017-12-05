@@ -10,15 +10,16 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.enterprise.context.Conversation;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 /**
  *
  * @author Andreas
  */
 @Named("currManager")
-@ConversationScoped
+@ViewScoped
 public class CurrManager implements Serializable{
     @EJB
     private CurrFacade currFacade;
@@ -26,14 +27,9 @@ public class CurrManager implements Serializable{
     private String toCurr;
     private double inAmount;
     private double outAmount;
-    @Inject
-    private Conversation conversation;
     
-     
     public void doConversion(){
-        if(!conversation.isTransient()){
-            conversation.begin();
-        }
+
         outAmount = currFacade.convert(fromCurr, toCurr, inAmount);
     }
 
